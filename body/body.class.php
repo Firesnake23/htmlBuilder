@@ -1,6 +1,7 @@
 <?php
     require_once $rootFolder.'htmlBuilder/body/htmlElement.class.php';
     require_once $rootFolder.'htmlBuilder/body/div.class.php';
+    require_once $rootFolder.'htmlBuilder/body/span.class.php';
     class Body extends htmlElement{
         public $page = null;
 
