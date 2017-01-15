@@ -3,6 +3,9 @@
 
     //All elements
     require_once $rootFolder.'htmlBuilder/body/a.class.php';
+    require_once $rootFolder.'htmlBuilder/body/abbr.class.php';
+    require_once $rootFolder.'htmlBuilder/body/address.class.php';
+    require_once $rootFolder.'htmlBuilder/body/area.class.php';
     require_once $rootFolder.'htmlBuilder/body/div.class.php';
     require_once $rootFolder.'htmlBuilder/body/input.class.php';
     require_once $rootFolder.'htmlBuilder/body/span.class.php';
