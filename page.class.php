@@ -97,8 +97,14 @@
         }
 
         public function createElement($name,$parent){
-            $element = new $name($parent);
-            return $element;
+            if($name == 'Var'){
+                $element = new VarTag($parent);
+            }elseif($name == 'Style'){
+                $element = new StyleTag($parent);
+            }else{
+                $element = new $name($parent);
+                return $element;
+            }
         }
 
         public function createStyle($property,$value){
