@@ -3,9 +3,11 @@
     require_once $rootFolder.'htmlBuilder/head/customMeta.class.php';
     require_once $rootFolder.'htmlBuilder/head/script.class.php';
     require_once $rootFolder.'htmlBuilder/head/link.class.php';
+    require_once $rootFolder.'htmlBuilder/head/base.class.php';
 
     class Head{
         private $title = null;
+        private $base = null;
         private $meta = array();
         private $scripts = array();
         private $links = array();
@@ -13,6 +15,11 @@
         public function create(){
             $html = "\t<head>" . PHP_EOL;
                 $html .= "\t\t<title>" . $this->getTitle() . '</title>' . PHP_EOL;
+
+                if($this->base != null){
+                    $html .= "\t\t" . '<base href="' . $this->base->getHref() . '" target="_' . $this->base->getTarget() .'">' . PHP_EOL;
+                }
+
                 foreach($this->meta as $m){
                     $html .= $m->create(2);
                 }
@@ -26,6 +33,10 @@
                 }
             $html .= "\t</head>" . PHP_EOL;
             return $html;
+        }
+
+        public function setBase(Base $base){
+            $this->base = $base;
         }
 
         public function getTitle(){

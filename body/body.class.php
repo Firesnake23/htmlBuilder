@@ -10,7 +10,6 @@
     require_once $rootFolder.'htmlBuilder/body/aside.class.php';
     require_once $rootFolder.'htmlBuilder/body/audio.class.php';
     require_once $rootFolder.'htmlBuilder/body/b.class.php';
-    require_once $rootFolder.'htmlBuilder/body/base.class.php';
     require_once $rootFolder.'htmlBuilder/body/bdi.class.php';
     require_once $rootFolder.'htmlBuilder/body/bdo.class.php';
     require_once $rootFolder.'htmlBuilder/body/blockquote.class.php';

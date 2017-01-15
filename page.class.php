@@ -84,6 +84,13 @@
             $this->head->addCustomMeta('charset',$charset);
         }
 
+        public function setBase($href,$target){
+            $base = new Base();
+            $base->setHref($href);
+            $base->setTarget($target);
+            $this->head->setBase($base);
+        }
+
         public function addScript($src){
             $this->head->addScript(new JavaScript($src));
         }
