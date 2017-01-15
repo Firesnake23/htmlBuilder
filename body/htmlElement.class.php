@@ -11,6 +11,7 @@
         protected $styles = array();
         protected $jsEvents = array();
         protected $customAttributes = array();
+        protected $hidden = false;
 
         public abstract function setId($id);
         public abstract function setName($elementName);
@@ -20,6 +21,8 @@
         public abstract function addStyle(Style $style);
         public abstract function addJsEvent(JavaScriptEvent $jsEvent);
         public abstract function addAttribute(CustomAttribute $attribute);
+
+        public abstract function hide();
 
         protected final function createTabs(){
             $html = '';
@@ -56,6 +59,10 @@
 
             if($this->class != null){
                 $html .= ' class="'. $this->class .'"';
+            }
+
+            if($this->hidden){
+                $html .= ' hidden';
             }
 
             if(count($this->styles) != 0){

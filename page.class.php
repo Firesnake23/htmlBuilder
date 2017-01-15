@@ -112,5 +112,9 @@
         public function createAttribute($name,$value){
             return new CustomAttribute($name,$value);
         }
+
+        public function hide(){
+            $this->hidden = true;
+        }
     }
 ?>

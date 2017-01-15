@@ -6,7 +6,7 @@
     require_once $rootFolder.'htmlBuilder/body/div.class.php';
     require_once $rootFolder.'htmlBuilder/body/input.class.php';
     require_once $rootFolder.'htmlBuilder/body/span.class.php';
-    
+
     class Body extends htmlElement{
         public $page = null;
 
@@ -71,6 +71,10 @@
         public function addAttribute(CustomAttribute $attribute){
             $len = count($this->CustomAttribute);
             $this->CustomAttribute[$len] = $attribute;
+        }
+
+        public function hide(){
+            $this->hidden = true;
         }
     }
 ?>

@@ -42,5 +42,9 @@
             $len = count($this->customAttributes);
             $this->customAttributes[$len] = $attribute;
         }
+
+        public function hide(){
+            $this->hidden = true;
+        }
     }
 ?>
