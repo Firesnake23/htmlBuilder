@@ -39,12 +39,19 @@
 
             $html .= '>' . PHP_EOL;
             $html .= $this->insertContent(false);
-            foreach($this->children as $child){
-                $html .= $child->create();
-            }
+            $html .= $this->addChildren();
             $html .= $this->createTabs() . '</' . $this->name . '>' . PHP_EOL;
             return $html;
         }
+
+        public function addChildren(){
+            $html = '';
+            foreach($this->children as $child){
+                $html .= $child->create();
+            }
+            return $html;
+        }
+
 
         public function getDependencies(){
             $html = '';
@@ -90,6 +97,10 @@
             }
 
             return $html;
+        }
+
+        public final function getParent(){
+            return $this->parent;
         }
 
         public function insertContent($ignoreTabs){
