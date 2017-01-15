@@ -21,7 +21,7 @@
         public abstract function addJsEvent(JavaScriptEvent $jsEvent);
         public abstract function addAttribute(CustomAttribute $attribute);
 
-        protected function createTabs(){
+        protected final function createTabs(){
             $html = '';
             for($i = 0; $i < $this->level; $i++){
                 $html .= "\t";
@@ -32,6 +32,19 @@
         public function create(){
             $html = '';
             $html .= $this->createTabs() . '<' . $this->name;
+            $html .= $this->getDependencies();
+
+            $html .= '>' . PHP_EOL;
+            $html .= $this->insertContent(false);
+            foreach($this->children as $child){
+                $html .= $child->create();
+            }
+            $html .= $this->createTabs() . '</' . $this->name . '>' . PHP_EOL;
+            return $html;
+        }
+
+        public function getDependencies(){
+            $html = '';
 
             if($this->id != null){
                 $html .= ' id="' . $this->id . '"';
@@ -69,21 +82,21 @@
                 $html .= '"';
             }
 
-            $html .= '>' . PHP_EOL;
-            $html .= $this->insertContent();
-            foreach($this->children as $child){
-                $html .= $child->create();
-            }
-            $html .= $this->createTabs() . '</' . $this->name . '>' . PHP_EOL;
             return $html;
         }
 
-        public function insertContent(){
+        public function insertContent($ignoreTabs){
             $html = '';
             if($this->content != null){
                 $this->level += 1;
                 if($this->content != null){
-                    $html .= $this->createTabs() . $this->content .PHP_EOL;
+                    if(!$ignoreTabs){
+                        $html .= $this->createTabs();
+                    }
+                    $html .= $this->content;
+                    if(get_Class($this) != "Input" && get_Class($this) != 'A'){
+                        $html .= PHP_EOL;
+                    }
                 }
                 $this->level -= 1;
             }

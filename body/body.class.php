@@ -1,7 +1,12 @@
 <?php
     require_once $rootFolder.'htmlBuilder/body/htmlElement.class.php';
+
+    //All elements
+    require_once $rootFolder.'htmlBuilder/body/a.class.php';
     require_once $rootFolder.'htmlBuilder/body/div.class.php';
+    require_once $rootFolder.'htmlBuilder/body/input.class.php';
     require_once $rootFolder.'htmlBuilder/body/span.class.php';
+    
     class Body extends htmlElement{
         public $page = null;
 
@@ -13,43 +18,10 @@
         public function create(){
             $html = "\t<body" ;
 
-            if($this->id != null){
-                $html .= ' id="' . $this->id . '"';
-            }
-
-            if($this->elementName != null){
-                $html .= ' name="' . $this->id . '"';
-            }
-
-            if($this->class != null){
-                $html .= ' class="'. $this->class .'"';
-            }
-
-            if(count($this->styles) != 0){
-                $html .= ' style="';
-                foreach($this->styles as $style){
-                    $html .= $style->getProperty() . ': ' . $style->getValue() . ';';
-                }
-                $html .= '"';
-            }
-
-            if(count($this->jsEvents) != 0){
-                foreach($this->jsEvents as $jsEvent){
-                    $html .=  ' ' . $jsEvent->getEvent();
-                    $html .= '="' . $jsEvent->getAction() . ';';
-                }
-                $html .= '"';
-            }
-
-            if(count($this->customAttributes) != 0){
-                foreach($this->customAttributes as $CustomAttribute){
-                    $html .=  ' ' . $CustomAttribute->getName();
-                    $html .= '="' . $CustomAttribute->getValue();
-                }
-                $html .= '"';
-            }
+            $html .= parent::getDependencies();
 
             $html .= '>' . PHP_EOL;
+            $html .= parent:: insertContent(false);
             foreach($this->children as $element){
                 $html .= $element->create();
             }

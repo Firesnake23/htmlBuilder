@@ -11,6 +11,7 @@
     Class Page extends htmlElement{
         private $head = null;
         private $body = null;
+        private $lang = null;
 
         public function __construct(){
             $this->head = new Head();
@@ -19,11 +20,20 @@
         }
 
         public function create(){
-            $html = '<html>'.PHP_EOL;
+            $html = '<!DOCTYPE html>' . PHP_EOL;
+            $html .= '<html';
+            if($this->lang != null){
+                $html .= ' lang="' . $this->lang . '"';
+            }
+            $html .= '>'.PHP_EOL;
             $html .= $this->head->create();
             $html .= $this->body->create();
             $html .= '</html>';
             return $html;
+        }
+
+        public function setLanguage($lang){
+            $this->lang = $lang;
         }
 
         public function getHead(){

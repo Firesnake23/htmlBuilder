@@ -5,7 +5,7 @@
 
         public function __construct($event,$action){
             $this->event = $event;
-            $this->action = $action;
+            $this->action = htmlspecialchars($action);
         }
 
         public function getEvent(){
