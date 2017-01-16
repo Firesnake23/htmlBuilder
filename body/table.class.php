@@ -1,10 +1,78 @@
 <?php
 	require_once $rootFolder.'htmlBuilder/body/htmlElement.class.php';
 	class Table extends htmlElement{
+		private $caption = null;
+		private $colgroup = null;
+		private $head = null;
 		public function __construct($parent){
 			$this->level = $parent->getLevel() + 1;
     		$this->name = 'table';
     		$this->parent = $parent;
+		}
+
+		public function create(){
+			$html = parent::createTabs();
+			$html .= '<table';
+			$html .= parent::getDependencies();
+			$html .= '>' . PHP_EOL;
+
+			if($this->caption != null){
+				$html .= $this->caption->create();
+			}
+
+			if($this->colgroup != null){
+				$html .= $this->colgroup->create();
+			}
+
+			$html .= parent::addChildren();
+			$html .= parent::createTabs() . '</table>' . PHP_EOL;
+			return $html;
+		}
+
+		public function createHead(){
+			if($this->head == null){
+				$this->head = new Thead($this);
+				$this->head->add();
+			}
+			return $this->head;
+		}
+
+		public function createColgroup($span = null){
+			if($this->colgroup == null){
+				$colgroup = new Colgroup($this);
+				if($span != null){
+					$colgroup->setSpan($span);
+				}
+
+				$this->colgroup = $colgroup;
+			}
+
+			return $this->getColgroup();
+		}
+
+		//returns for customizing
+		public function getTableHead(){
+			return $this->head;
+		}
+
+		//returns for customizing
+		public function getHeadRow(){
+			return $this->headRow;
+		}
+
+		//returns for customizing
+		public function getColgroup(){
+			return $this->colgroup;
+		}
+
+		//returns for customizing
+		public function getCaption(){
+			return $this->caption;
+		}
+
+		public function setCaption($caption){
+			$this->caption = new Caption($this);
+			$this->caption->setContent($caption);
 		}
 
 		public function setId($id){
@@ -25,22 +93,22 @@
 
 		public function addStyle(Style $style){
 			$len = count($this->styles);
-    		$this->styles[$len] = $style;		
+    		$this->styles[$len] = $style;
 		}
 
 		public function addJsEvent(JavaScriptEvent $jsEvent){
 			$len = count($this->jsEvents);
-    		$this->jsEvents[$len] = $jsEvent;		
+    		$this->jsEvents[$len] = $jsEvent;
 		}
 
 		public function addChild(HtmlElement $child){
 			$len = count($this->children);
-    		$this->children[$len] = $child;		
+    		$this->children[$len] = $child;
 		}
 
 		public function addAttribute(CustomAttribute $attribute){
 			$len = count($this->customAttributes);
-    		$this->customAttributes[$len] = $attribute;		
+    		$this->customAttributes[$len] = $attribute;
 		}
 
 		public function hide(){

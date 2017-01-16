@@ -112,7 +112,7 @@
                         $html .= $this->createTabs();
                     }
                     $html .= $this->content;
-                    if(get_Class($this) != "Input" && get_Class($this) != 'A'){
+                    if(get_Class($this) != "Input" && get_Class($this) != 'A' && get_Class($this) != 'Button' && get_class($this) != 'Caption' && get_class($this) != 'Th'){
                         $html .= PHP_EOL;
                     }
                 }
