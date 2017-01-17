@@ -4,6 +4,8 @@
 		private $caption = null;
 		private $colgroup = null;
 		private $head = null;
+		private $body = null;
+		private $foot = null;
 		public function __construct($parent){
 			$this->level = $parent->getLevel() + 1;
     		$this->name = 'table';
@@ -24,9 +26,40 @@
 				$html .= $this->colgroup->create();
 			}
 
-			$html .= parent::addChildren();
+            foreach($this->children as $child){
+                $html .= $child->create();
+
+				if(get_class($child) == 'Thead'){
+					if($this->foot != null){
+						$html .= $this->foot->create();
+					}
+				}
+            }
 			$html .= parent::createTabs() . '</table>' . PHP_EOL;
 			return $html;
+		}
+
+		public function createFoot(){
+			if($this->foot == null){
+				$this->foot = new Tfoot($this);
+			}
+			return $this->getFoot();
+		}
+
+		public function getFoot(){
+			return $this->foot;
+		}
+
+		public function createBody(){
+			if($this->body == null){
+				$this->body = new Tbody($this);
+				$this->body->add();
+			}
+			return $this->getBody();
+		}
+
+		public function getBody(){
+			return $this->body;
 		}
 
 		public function createHead(){
@@ -34,6 +67,10 @@
 				$this->head = new Thead($this);
 				$this->head->add();
 			}
+			return $this->getHead();
+		}
+
+		public function getHead(){
 			return $this->head;
 		}
 

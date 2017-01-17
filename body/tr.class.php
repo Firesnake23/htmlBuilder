@@ -7,6 +7,13 @@
     		$this->parent = $parent;
 		}
 
+		public function createData($content){
+			$data = new Td($this);
+			$data->setContent($content);
+			$data->add();
+			return $data;
+		}
+
 		public function createTitle($titleText){
 			$title = new Th($this);
 			$title->setContent($titleText);

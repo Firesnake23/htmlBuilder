@@ -7,6 +7,12 @@
     		$this->parent = $parent;
 		}
 
+		public function createRow(){
+			$row = new Tr($this);
+			$row->add();
+			return $row;
+		}
+
 		public function setId($id){
 			$this->id = $id;
 		}
