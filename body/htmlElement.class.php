@@ -121,6 +121,10 @@
             return $html;
         }
 
+        public function getName(){
+            return $this->name;
+        }
+
         public function getLevel(){
             return $this->level;
         }
