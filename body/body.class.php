@@ -52,6 +52,9 @@
     require_once $rootFolder.'htmlBuilder/body/ins.class.php';
     require_once $rootFolder.'htmlBuilder/body/kbd.class.php';
     require_once $rootFolder.'htmlBuilder/body/keygen.class.php';
+    require_once $rootFolder.'htmlBuilder/body/label.class.php';
+    require_once $rootFolder.'htmlBuilder/body/legend.class.php';
+    require_once $rootFolder.'htmlBuilder/body/li.class.php';
     require_once $rootFolder.'htmlBuilder/body/main.class.php';
     require_once $rootFolder.'htmlBuilder/body/map.class.php';
     require_once $rootFolder.'htmlBuilder/body/mark.class.php';

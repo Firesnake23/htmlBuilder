@@ -1,52 +1,44 @@
 <?php
 	require_once $rootFolder.'htmlBuilder/body/htmlElement.class.php';
-	class Embed extends htmlElement{
-		private $height = null;
-		private $src = null;
-		private $type = null;
-		private $width = null;
+	class Label extends htmlElement{
+		private $for = null;
+		private $form = array();
 		public function __construct($parent){
 			$this->level = $parent->getLevel() + 1;
-    		$this->name = 'embed';
+    		$this->name = 'label';
     		$this->parent = $parent;
 		}
 
 		public function create(){
 			$html = parent::createTabs();
-			$hmtl .= '<embed';
+			$html .= '<label';
 			$html .= parent::getDependencies();
+			$html .= ($this->for != null ? ' for="' . $this->for . '"' : '');
 
-			if($this->src != null){
-				$hmtl .= ' src="' . $this->src . '"';
+			if(count($this->form) > 0 ){
+				$i = 0;
+				foreach($this->form as $form){
+					if(i != null){
+						$html .= ',';
+					}
+					$html .= $form;
+					$i++;
+				}
 			}
 
-			if($this->type != null){
-				$html .= ' type="' . $this->type . '"';
-			}
-
-			if($this->width != null){
-				$html .= ' width="' . $this->width . '"';
-			}
-
-			if($this->height != null){
-				$html .= ' height="' . $this->width . '"';
-			}
+			$html .= '>';
+			$html .= parent::insertContent(true);
+			$html .= '</label>' . PHP_EOL;
+			return $html;
 		}
 
-		public function setWidth($width){
-			$this->width = $width;
+		public function setFor($for){
+			$this->for = $for;
 		}
 
-		public function setType($type){
-			$this->type = $type;
-		}
-
-		public function setSource($src){
-			$this->src = $src;
-		}
-
-		public function setHeight($height){
-			$this->height = $height;
+		public function addForm($formId){
+			$len = count($this->form);
+			$this->fomr[$len] = $formId;
 		}
 
 		public function setId($id){

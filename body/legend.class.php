@@ -1,52 +1,20 @@
 <?php
 	require_once $rootFolder.'htmlBuilder/body/htmlElement.class.php';
-	class Embed extends htmlElement{
-		private $height = null;
-		private $src = null;
-		private $type = null;
-		private $width = null;
+	class Legend extends htmlElement{
 		public function __construct($parent){
 			$this->level = $parent->getLevel() + 1;
-    		$this->name = 'embed';
+    		$this->name = 'legend';
     		$this->parent = $parent;
 		}
 
 		public function create(){
 			$html = parent::createTabs();
-			$hmtl .= '<embed';
+			$html .= '<legend';
 			$html .= parent::getDependencies();
-
-			if($this->src != null){
-				$hmtl .= ' src="' . $this->src . '"';
-			}
-
-			if($this->type != null){
-				$html .= ' type="' . $this->type . '"';
-			}
-
-			if($this->width != null){
-				$html .= ' width="' . $this->width . '"';
-			}
-
-			if($this->height != null){
-				$html .= ' height="' . $this->width . '"';
-			}
-		}
-
-		public function setWidth($width){
-			$this->width = $width;
-		}
-
-		public function setType($type){
-			$this->type = $type;
-		}
-
-		public function setSource($src){
-			$this->src = $src;
-		}
-
-		public function setHeight($height){
-			$this->height = $height;
+			$html .= '>';
+			$html .= parent::insertcontent(true);
+			$html .= '</legend>' . PHP_EOL;
+			return $html;
 		}
 
 		public function setId($id){

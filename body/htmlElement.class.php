@@ -103,6 +103,10 @@
             return $this->parent;
         }
 
+        public final function setParent($parent){
+            $this->parent = $parent;
+        }
+
         public function insertContent($ignoreTabs){
             $html = '';
             if($this->content != null){
@@ -112,7 +116,8 @@
                         $html .= $this->createTabs();
                     }
                     $html .= $this->content;
-                    if(get_Class($this) != "Input" && get_Class($this) != 'A' && get_Class($this) != 'Button' && get_class($this) != 'Caption' && get_class($this) != 'Th'){
+                    if(get_Class($this) != "Input" && get_Class($this) != 'A' && get_Class($this) != 'Button' && get_class($this) != 'Caption' && get_class($this) != 'Th' && get_Class($this) != 'Td'
+                        && get_Class($this) != 'Legend' && get_class($this) != 'Label'){
                         $html .= PHP_EOL;
                     }
                 }
