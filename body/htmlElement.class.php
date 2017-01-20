@@ -117,7 +117,7 @@
                     }
                     $html .= $this->content;
                     if(get_Class($this) != "Input" && get_Class($this) != 'A' && get_Class($this) != 'Button' && get_class($this) != 'Caption' && get_class($this) != 'Th' && get_Class($this) != 'Td'
-                        && get_Class($this) != 'Legend' && get_class($this) != 'Label'){
+                        && get_Class($this) != 'Legend' && get_class($this) != 'Label' && get_class($this) != 'Li'){
                         $html .= PHP_EOL;
                     }
                 }
