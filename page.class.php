@@ -110,8 +110,8 @@
                 $element = new StyleTag($parent);
             }else{
                 $element = new $name($parent);
-                return $element;
             }
+            return $element;
         }
 
         public function createStyle($property,$value){

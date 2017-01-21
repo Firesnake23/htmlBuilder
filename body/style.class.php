@@ -1,10 +1,41 @@
 <?php
 	require_once $rootFolder.'htmlBuilder/body/htmlElement.class.php';
 	class StyleTag extends htmlElement{
+		private $showType = true;
+		private $media = null;
+		private $scoped = false;
 		public function __construct($parent){
 			$this->level = $parent->getLevel() + 1;
     		$this->name = 'style';
     		$this->parent = $parent;
+		}
+
+		public function create(){
+			$html = parent::createTabs();
+			$html .= '<' . $this->name;
+
+			$html .= parent::getDependencies();
+
+			$html .= ($this->showType != null ? ' type="text/css"' : '');
+			$html .= ($this->media != null ? ' media="' . $this->media . '"' : '');
+			$html .= ($this->scoped ? ' scoped' : '');
+
+			$html .=  '>' . PHP_EOL;
+			$html .= parent::insertContent(false);
+			$html .= parent::createTabs() . '</' . $this->name . '>' . PHP_EOL;
+			return $html;
+		}
+
+		public function hideType(){
+			$this->showType = false;
+		}
+
+		public function setMedia($media){
+			$this->media = $media;
+		}
+
+		public function scoped(){
+			$this->scoped = true;
 		}
 
 		public function setId($id){
