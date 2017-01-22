@@ -117,7 +117,8 @@
                     }
                     $html .= $this->content;
                     if(get_Class($this) != "Input" && get_Class($this) != 'A' && get_Class($this) != 'Button' && get_class($this) != 'Caption' && get_class($this) != 'Th' && get_Class($this) != 'Td'
-                        && get_Class($this) != 'Legend' && get_class($this) != 'Label' && get_class($this) != 'Li' && get_class($this) != 'Output'){
+                        && get_Class($this) != 'Legend' && get_class($this) != 'Label' && get_class($this) != 'Li' && get_class($this) != 'Output' && get_Class($this) != 'Time'
+                        && get_Class($this) != "H1" && get_Class($this) != 'H2' && get_Class($this) != 'H3' && get_class($this) != 'H4' && get_class($this) != 'H5' && get_Class($this) != 'H6'){
                         $html .= PHP_EOL;
                     }
                 }
