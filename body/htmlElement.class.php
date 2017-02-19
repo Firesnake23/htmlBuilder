@@ -61,7 +61,7 @@
             }
 
             if($this->elementName != null){
-                $html .= ' name="' . $this->id . '"';
+                $html .= ' name="' . $this->elementName . '"';
             }
 
             if($this->class != null){
