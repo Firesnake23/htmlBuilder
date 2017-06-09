@@ -64,10 +64,9 @@
 				$html .= ' value="' . $this->value . '"';
 			}
 
-			$html .= '>' . PHP_EOL;
+			$html .= '>';
 			$html .= parent::insertContent(true);
-			$html .= parent::addChildren();
-			$html .= parent:: createTabs() . '</button>' . PHP_EOL;
+			$html .= '</button>' . PHP_EOL;
 			return $html;
 		}
 

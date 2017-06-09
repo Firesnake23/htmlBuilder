@@ -68,8 +68,8 @@
             $html .= ($this->width != null ? ' width="' . $this->width . '"' : '');
 
 
-            $html .= ($this->value != null ? ' value="' . $this->value . '"' : '');
-            $html .= ($this->placeholder != null ? ' placeholder="' . $this->placeholder . '"' : '');
+            $html .= ($this->value != null ? $html .= ' value="' . $this->value . '"' : '');
+            $html .= ($this->placeholder != null ? $html .= ' placeholder="' . $this->placeholder . '"' : '');
             $html .= '>';
             if(!$this->contentBefore){
                 $html .= parent::insertContent(true);
