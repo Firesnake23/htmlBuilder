@@ -11,9 +11,10 @@
 		public function create(){
 			$html = parent::createTabs();
 			$html .= '<' . $this->name;
-
+			$html .= parent::getDependencies();
 			$html .=  '>';
 			$html .= parent::insertContent(true);
+			$html .= parent::addChildren();
 			$html .= '</' . $this->name . '>' . PHP_EOL;
 			return $html;
 		}
