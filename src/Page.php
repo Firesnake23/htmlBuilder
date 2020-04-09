@@ -25,6 +25,11 @@ class Page
         $this->html->addChild($this->body);
     }
 
+    public function getHtml(): Html
+    {
+        return $this->html;
+    }
+
     public function getHead(): Head
     {
         return $this->head;

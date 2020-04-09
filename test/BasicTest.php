@@ -3,6 +3,7 @@
 namespace firesnake\htmlBuilder\test;
 
 use firesnake\htmlBuilder\body\Div;
+use firesnake\htmlBuilder\creators\NestedCreator;
 use firesnake\htmlBuilder\head\Title;
 use firesnake\htmlBuilder\HtmlElement;
 use firesnake\htmlBuilder\Page;
@@ -38,6 +39,17 @@ class BasicTest extends TestCase
         $page->getBody()->addChild($div);
         $html = $page->create();
         $this->assertEquals(TestUtils::fileContent('baseAndDiv.html'), $html);
+    }
+
+    public function testDivNested()
+    {
+        $page = new Page();
+        $page->getHtml()->setCreator(new NestedCreator());
+        $div = new Div();
+        $div->setContent('content');
+        $page->getBody()->addChild($div);
+        $html = $page->create();
+        $this->assertEquals(TestUtils::fileContent('baseAndDivNested.html'), $html);
     }
 
     public function testDivAllAttribs()
