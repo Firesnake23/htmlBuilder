@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		<div>
+			<form id="form">
+				<input type="text" pattern="[A-Za-z]{10}" minlength="3" maxlength="10" autocomplete="on" autofocus form="form" list="someList" multiple placeholder="somePlaceholder" required size="3">
+				<input type="number" min="0" max="100" autocomplete="off" step="5">
+				<input type="checkbox" checked height="30" name="chkTest" width="30">
+				<input type="file" accept="application/pdf" dirname="/img">
+				<input type="image" src="http://localhost/img/sample.png" alt="send" disabled readonly>
+				<input type="button" value="Send" formmethod="post" formenctype="text/plain" formnovalidate formtarget="_blank">
+			</form>
+		</div>
+	</body>
+</html>

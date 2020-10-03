@@ -1,0 +1,1 @@
+{"virtualbox":{"/var/www/":{"guestpath":"/var/www","hostpath":"D:/","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"D:/allgemein/php_workspace/htmlBuilder","disabled":false,"__vagrantfile":true}}}

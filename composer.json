@@ -1,0 +1,14 @@
+{
+    "name": "vagrant/workdir",
+    "type": "project",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "firesnake\\htmlBuilder\\": "src/",
+            "firesnake\\htmlBuilder\\test\\": "test/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8"
+    }
+}
